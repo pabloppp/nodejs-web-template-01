@@ -1,0 +1,8 @@
+[ignore]
+.*/node_modules/google-gax/.*
+.*/node_modules/protobufjs/.*
+
+[include]
+
+[libs]
+flow-typed/npm

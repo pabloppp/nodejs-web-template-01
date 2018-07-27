@@ -1,0 +1,44 @@
+{
+  "name": "BaseProject01",
+  "version": "0.0.1",
+  "main": "src/server.js",
+  "license": "MIT",
+  "author": "pablo pernías <pablo@pernias.com>",
+  "scripts": {
+    "start": "NODE_ENV=dev nodemon src/server.js --exec babel-node --ignore tests/*",
+    "start:build": "node build/server.js",
+    "flow-type-update": "flow-typed install",
+    "test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha tests/* --compilers js:@babel/register --require @babel/polyfill --timeout 9000 --exit",
+    "test:types": "flow check src/",
+    "test:all": "yarn test:types && yarn test",
+    "scripts": "list-scripts",
+    "build:clean": "rm -rf build && mkdir build",
+    "build:server": "babel src --out-dir build -s",
+    "build": "yarn build:clean && yarn build:server",
+    "build:run": "yarn build && yarn start:build"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.0.0-beta.51",
+    "@babel/core": "7.0.0-beta.51",
+    "@babel/node": "7.0.0-beta.51",
+    "@babel/plugin-transform-flow-strip-types": "7.0.0-beta.51",
+    "@babel/preset-env": "7.0.0-beta.51",
+    "@babel/preset-flow": "7.0.0-beta.51",
+    "@babel/preset-stage-0": "7.0.0-beta.51",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "flow-bin": "^0.77.0",
+    "flow-typed": "^2.1.2",
+    "mocha": "^5.2.0",
+    "nyc": "^11.0.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "7.0.0-beta.51",
+    "express": "^4.16.3",
+    "mustache": "^2.3.0"
+  },
+  "engines": {
+    "node": "v8.9.1",
+    "npm": "5.5.1"
+  }
+}
